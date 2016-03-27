@@ -1,0 +1,44 @@
+@import "../../node_modules/nib/index.styl"
+@import "../../node_modules/sanitize.css/lib/sanitize.styl"
+
+var(arg) { arg; }
+--company-color = #3BC228;
+--company-dark-color = #3A7921;
+
+.header-top {
+    background: linear-gradient(
+        to right,
+        white,
+        var(--company-color) 20%,
+        var(--company-color) 80%,
+        white);
+}
+
+h1 {
+    background: linear-gradient(
+        to bottom,
+        gray,
+        white 30%);
+}
+
+.header-bottom {
+    background: linear-gradient(
+        to right,
+        white,
+        var(--company-dark-color) 20%,
+        var(--company-dark-color) 80%,
+        white);
+}
+
+.rolling-stock-type {
+    background: linear-gradient(
+        to bottom,
+        var(--company-dark-color),
+        var(--company-color),
+        var(--company-dark-color));
+}
+
+.name {
+    writing-mode: vertical-rl;
+    height: 10em;
+}

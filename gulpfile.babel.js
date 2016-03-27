@@ -15,13 +15,14 @@ jade.dest = "www/";
 stylus.dest = "www/";
 test.dest = "www/test/";
 ts.main = null;
+ts.browser.configPath = "tsconfig.json";
 ts.browser.files = [{
-    src: "src/js/index.ts",
-    dest: "www/js/"
+    dest: "www/js/",
+    src: "src/js/index.tsx"
 }];
 
 gulp.task("clean", done => {
-    del("www/").then(() => {
+    del("www/*").then(() => {
         mkdir("www", () => {
             mkdir("www/img", done);
         });
@@ -64,7 +65,7 @@ gulp.task("watch", () => {
     gulp.watch("src/**/*.js", gulp.series(begin, "copy:copy", end));
     gulp.watch(["src/**/*.ts*", "!src/test/**"], gulp.series(begin, "ts:debug", "test:test", end));
     gulp.watch("src/**/*.jade", gulp.series(begin, "jade:debug", end));
-    gulp.watch("src/**/*.stylus", gulp.series(begin, "stylus:stylus", end));
+    gulp.watch("src/**/*.styl", gulp.series(begin, "stylus:stylus", end));
     gulp.watch("src/test/**/*.ts", gulp.series(begin, "test:test", end));
 
     function begin(callback) {
