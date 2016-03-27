@@ -9,7 +9,7 @@ class Header extends React.Component<void, void> {
             <div style={{ position: "relative" }}>
                 <h1 style={{
                     borderTop: "thin solid white",
-                    paddingTop: "0.75em",
+                    paddingTop: "1em",
                     lineHeight: "1em",
                     textAlign: "center",
                     fontSize: "3em"
@@ -52,21 +52,65 @@ class Clock extends React.Component<void, void> {
     }
 }
 
+class Stopover extends React.Component<Stopover.Props, void> {
+    render() {
+        return <div style={{ fontSize: "1.5em", width: "1.5em" }}>
+            <div className="name" style={{
+                height: "10em",
+                textAlign: "right"
+            }}>{this.props.name}</div>
+            <div style={{
+                textAlign: "center"
+            }}>{this.props.minutes}</div>
+        </div>;
+    }
+}
+
+namespace Stopover {
+    export interface Props {
+        name: string;
+        minutes: string;
+    }
+}
+
 class Root extends React.Component<void, void> {
     render() {
-        return <main>
+        let stopovers1 = [
+            { stationNumber: "01", name: "札 幌", minutes: "10" },
+            { stationNumber: "H02", name: "苗 穂", minutes: "-" },
+            { stationNumber: "H03", name: "白 石", minutes: "-" },
+            { stationNumber: "H04", name: "平 和", minutes: "-" },
+            { stationNumber: "H05", name: "新札幌", minutes: "10" },
+            { stationNumber: "H06", name: "上野幌", minutes: "-" },
+            { stationNumber: "H07", name: "北広島", minutes: "10" },
+        ];
+        let stopovers2 = [
+            { stationNumber: "H08", name: "島 松", minutes: "-" },
+            { stationNumber: "H09", name: "恵み野", minutes: "-" },
+            { stationNumber: "H10", name: "恵 庭", minutes: "10" },
+            { stationNumber: "H11", name: "サッポロビール庭園", minutes: "-" },
+            { stationNumber: "H12", name: "長 都", minutes: "-" },
+            { stationNumber: "H13", name: "千 歳", minutes: "10" },
+            { stationNumber: "H14", name: "南千歳", minutes: "10" },
+            { stationNumber: "AP15", name: "新千歳空港", minutes: "10" }
+        ];
+        return <div>
             <Header/>
             <ul style={{ listStyle: "none", display: "flex" }}>
-                <li>
-                    <div className="name">札幌</div>
-                    <div className="minutes">10</div>
-                </li>
-                <li>
-                    <div className="name">新千歳空港</div>
-                    <div className="minutes">10</div>
-                </li>
+                {
+                    stopovers1.map(x => <li>
+                        <Stopover name={x.name} minutes={x.minutes}/>
+                    </li>)
+                }
             </ul>
-        </main>;
+            <ul style={{ listStyle: "none", display: "flex" }}>
+                {
+                    stopovers2.map(x => <li>
+                        <Stopover name={x.name} minutes={x.minutes}/>
+                    </li>)
+                }
+            </ul>
+        </div>;
     }
 }
 
