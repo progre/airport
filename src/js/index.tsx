@@ -75,37 +75,37 @@ namespace Stopover {
 
 class Root extends React.Component<void, void> {
     render() {
-        let stopovers1 = [
-            { stationNumber: "01", name: "札 幌", minutes: "10" },
-            { stationNumber: "H02", name: "苗 穂", minutes: "-" },
-            { stationNumber: "H03", name: "白 石", minutes: "-" },
-            { stationNumber: "H04", name: "平 和", minutes: "-" },
-            { stationNumber: "H05", name: "新札幌", minutes: "10" },
-            { stationNumber: "H06", name: "上野幌", minutes: "-" },
-            { stationNumber: "H07", name: "北広島", minutes: "10" },
+        let stopovers = [
+            { stationNumber: "01", name: "札 幌", en: "Sapporo", minutes: "0" },
+            { stationNumber: "H02", name: "苗 穂", en: "Naebo", minutes: "-" },
+            { stationNumber: "H03", name: "白 石", en: "Shiroishi", minutes: "-" },
+            { stationNumber: "H04", name: "平 和", en: "Heiwa", minutes: "-" },
+            { stationNumber: "H05", name: "新札幌", en: "Shin-Sapporo", minutes: "9" },
+            { stationNumber: "H06", name: "上野幌", en: "Kami-Nopporo", minutes: "-" },
+            { stationNumber: "H07", name: "北広島", en: "Kitahiroshima", minutes: "17" },
+            { stationNumber: "H08", name: "島 松", en: "Shimamatsu", minutes: "-" },
+            { stationNumber: "H09", name: "恵み野", en: "Megumino", minutes: "-" },
+            { stationNumber: "H10", name: "恵 庭", en: "Eniwa", minutes: "24" },
+            { stationNumber: "H11", name: "サッポロビール庭園", en: "Sapporo Beer Teien", minutes: "-" },
+            { stationNumber: "H12", name: "長 都", en: "Osatsu", minutes: "-" },
+            { stationNumber: "H13", name: "千 歳", en: "Chitose", minutes: "30" },
+            { stationNumber: "H14", name: "南千歳", en: "Minami-Chitose", minutes: "34" },
+            { stationNumber: "AP15", name: "新千歳空港", en: "New Chitose Airport", minutes: "37" }
         ];
-        let stopovers2 = [
-            { stationNumber: "H08", name: "島 松", minutes: "-" },
-            { stationNumber: "H09", name: "恵み野", minutes: "-" },
-            { stationNumber: "H10", name: "恵 庭", minutes: "10" },
-            { stationNumber: "H11", name: "サッポロビール庭園", minutes: "-" },
-            { stationNumber: "H12", name: "長 都", minutes: "-" },
-            { stationNumber: "H13", name: "千 歳", minutes: "10" },
-            { stationNumber: "H14", name: "南千歳", minutes: "10" },
-            { stationNumber: "AP15", name: "新千歳空港", minutes: "10" }
-        ];
+        let stopovers1 = stopovers.slice(0, 8);
+        let stopovers2 = stopovers.slice(8);
         return <div>
             <Header/>
             <ul style={{ listStyle: "none", display: "flex" }}>
                 {
-                    stopovers1.map(x => <li>
+                    stopovers1.map(x => <li key={x.stationNumber}>
                         <Stopover name={x.name} minutes={x.minutes}/>
                     </li>)
                 }
             </ul>
             <ul style={{ listStyle: "none", display: "flex" }}>
                 {
-                    stopovers2.map(x => <li>
+                    stopovers2.map(x => <li key={x.stationNumber}>
                         <Stopover name={x.name} minutes={x.minutes}/>
                     </li>)
                 }
