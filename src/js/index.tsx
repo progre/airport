@@ -54,14 +54,33 @@ class Clock extends React.Component<void, void> {
 
 class Stopover extends React.Component<Stopover.Props, void> {
     render() {
-        return <div style={{ fontSize: "1.5em", width: "1.5em" }}>
+        let nameArray: (string | JSX.Element)[] = this.props.name.split("\n");
+        for (let i = nameArray.length - 1; i >= 0; i--) {
+            nameArray.splice(i, 0, <br/>);
+        }
+        return <div style={{
+            fontSize: "1.5em",
+            width: "3em"
+        }}>
             <div className="name" style={{
-                height: "10em",
+                height: "7em",
+                padding: "0.125em 0.75em",
                 textAlign: "right"
-            }}>{this.props.name}</div>
+            }}>
+                {nameArray}
+            </div>
             <div style={{
-                textAlign: "center"
-            }}>{this.props.minutes}</div>
+                textAlign: "center",
+                lineHeight: "1em",
+                margin: "0.25em 0.75em",
+                backgroundColor: "white"
+            }}>
+                <span style={{
+                    fontWeight: "bold"
+                }}>
+                    {this.props.minutes}
+                </span>
+            </div>
         </div>;
     }
 }
@@ -70,6 +89,41 @@ namespace Stopover {
     export interface Props {
         name: string;
         minutes: string;
+    }
+}
+
+class Stopovers extends React.Component<Stopovers.Props, void> {
+    render() {
+        return <div style={{ position: "relative" }}>
+            <ul style={{
+                listStyle: "none",
+                display: "flex"
+            }}>
+                {
+                    this.props.stopovers.map(x => <li key={x.stationNumber}>
+                        <Stopover name={x.name} minutes={x.minutes}/>
+                    </li>)
+                }
+            </ul>
+            <hr className="stopovers-line" style={{
+                position: "absolute",
+                height: "2.25em",
+                width: "100%",
+                bottom: 0,
+                zIndex: -1,
+                borderRadius: 4
+            }}/>
+        </div>;
+    }
+}
+
+namespace Stopovers {
+    export interface Props {
+        stopovers: {
+            stationNumber: string;
+            name: string;
+            minutes: string;
+        }[];
     }
 }
 
@@ -86,30 +140,16 @@ class Root extends React.Component<void, void> {
             { stationNumber: "H08", name: "島 松", en: "Shimamatsu", minutes: "-" },
             { stationNumber: "H09", name: "恵み野", en: "Megumino", minutes: "-" },
             { stationNumber: "H10", name: "恵 庭", en: "Eniwa", minutes: "24" },
-            { stationNumber: "H11", name: "サッポロビール庭園", en: "Sapporo Beer Teien", minutes: "-" },
+            { stationNumber: "H11", name: "サッポロ\nビール庭園", en: "Sapporo-Beer-Teien", minutes: "-" },
             { stationNumber: "H12", name: "長 都", en: "Osatsu", minutes: "-" },
             { stationNumber: "H13", name: "千 歳", en: "Chitose", minutes: "30" },
             { stationNumber: "H14", name: "南千歳", en: "Minami-Chitose", minutes: "34" },
             { stationNumber: "AP15", name: "新千歳空港", en: "New Chitose Airport", minutes: "37" }
         ];
-        let stopovers1 = stopovers.slice(0, 8);
-        let stopovers2 = stopovers.slice(8);
         return <div>
             <Header/>
-            <ul style={{ listStyle: "none", display: "flex" }}>
-                {
-                    stopovers1.map(x => <li key={x.stationNumber}>
-                        <Stopover name={x.name} minutes={x.minutes}/>
-                    </li>)
-                }
-            </ul>
-            <ul style={{ listStyle: "none", display: "flex" }}>
-                {
-                    stopovers2.map(x => <li key={x.stationNumber}>
-                        <Stopover name={x.name} minutes={x.minutes}/>
-                    </li>)
-                }
-            </ul>
+            <Stopovers stopovers={stopovers.slice(0, 8) }/>
+            <Stopovers stopovers={stopovers.slice(8) }/>
         </div>;
     }
 }
