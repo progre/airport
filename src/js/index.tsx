@@ -84,14 +84,12 @@ class Stopover extends React.Component<Stopover.Props, void> {
             <div style={{
                 textAlign: "center",
                 lineHeight: "1em",
-                margin: "0.25em 0.75em",
-                backgroundColor: "white"
+                margin: "0.25em auto",
+                width: "1.5em",
+                backgroundColor: "white",
+                fontWeight: "bold"
             }}>
-                <span style={{
-                    fontWeight: "bold"
-                }}>
-                    {this.props.minutes}
-                </span>
+                {this.props.minutes}
             </div>
         </div>;
     }
@@ -109,7 +107,8 @@ class Stopovers extends React.Component<Stopovers.Props, void> {
         return <div style={{ position: "relative" }}>
             <ul style={{
                 listStyle: "none",
-                display: "flex"
+                display: "flex",
+                margin: "0 2.5em"
             }}>
                 {
                     this.props.stopovers.map(x => <li key={x.stationNumber}>
@@ -160,8 +159,9 @@ class Root extends React.Component<void, void> {
         ];
         return <div>
             <Header/>
-            <Stopovers stopovers={stopovers.slice(0, 8) }/>
-            <Stopovers stopovers={stopovers.slice(8) }/>
+            <Stopovers stopovers={stopovers.slice(stopovers.length - 5, stopovers.length) }/>
+            <Stopovers stopovers={stopovers.slice(stopovers.length - 10, stopovers.length - 5) }/>
+            <Stopovers stopovers={stopovers.slice(stopovers.length - 15, stopovers.length - 10) }/>
         </div>;
     }
 }
