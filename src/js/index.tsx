@@ -55,7 +55,7 @@ class Clock extends React.Component<void, void> {
 class Stopover extends React.Component<Stopover.Props, void> {
     render() {
         let nameArray: (string | JSX.Element)[] = this.props.name.split("\n");
-        for (let i = nameArray.length - 1; i >= 0; i--) {
+        for (let i = nameArray.length - 1; i >= 1; i--) {
             nameArray.splice(i, 0, <br/>);
         }
         return <div style={{
@@ -63,11 +63,23 @@ class Stopover extends React.Component<Stopover.Props, void> {
             width: "3em"
         }}>
             <div className="name" style={{
-                height: "7em",
-                padding: "0.125em 0.75em",
-                textAlign: "right"
+                height: "6em",
+                position: "relative",
+                width: "100%"
             }}>
-                {nameArray}
+                <div style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    display: "inline",
+                    transform: "translate(-50%, -50%)",
+                    height: "inherit",
+                    textAlign: "right",
+                    lineHeight: "1em",
+                    padding: "0.125em"
+                }}>
+                    {nameArray}
+                </div>
             </div>
             <div style={{
                 textAlign: "center",
