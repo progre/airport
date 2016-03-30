@@ -2,22 +2,27 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+const BASE_FONT_SIZE = 1;
+
 class Header extends React.Component<void, void> {
     render() {
         return <header>
-            <hr className="header-top" style={{ height: 8 }}/>
+            <hr className="header-top" style={{ height: 6 }}/>
             <div style={{ position: "relative" }}>
                 <h1 style={{
                     borderTop: "thin solid white",
-                    paddingTop: "1em",
-                    lineHeight: "1em",
                     textAlign: "center",
-                    fontSize: "3em"
-                }}>新千歳空港<small>行</small></h1>
+                    paddingTop: BASE_FONT_SIZE * 0.75 + "em",
+                    fontSize: BASE_FONT_SIZE * 2 + "em",
+                    lineHeight: BASE_FONT_SIZE + "em"
+                }}>
+                    新千歳空港
+                    <small style={{ paddingLeft: "0.5em" }}>行</small>
+                </h1>
                 <RollingStockType/>
                 <Clock/>
             </div>
-            <hr className="header-bottom" style={{ height: 6 }}/>
+            <hr className="header-bottom" style={{ height: 3 }}/>
         </header>;
     }
 }
@@ -31,7 +36,7 @@ class RollingStockType extends React.Component<void, void> {
             padding: "0 0.5em",
             borderBottomLeftRadius: 4,
             borderBottomRightRadius: 4,
-            fontSize: "1.5em",
+            fontSize: BASE_FONT_SIZE + "em",
             fontWeight: "bold",
             color: "white"
         }}>快速</div>;
@@ -44,10 +49,11 @@ class Clock extends React.Component<void, void> {
             position: "absolute",
             bottom: 0,
             right: 0,
-            fontSize: "1em",
+            lineHeight: BASE_FONT_SIZE + "em",
+            fontSize: BASE_FONT_SIZE * 1.25 + "em",
             fontWeight: "bold"
         }}>
-            12: 00
+            {"12:00"}
         </div>;
     }
 }
@@ -59,7 +65,7 @@ class Stopover extends React.Component<Stopover.Props, void> {
             nameArray.splice(i, 0, <br/>);
         }
         return <div style={{
-            fontSize: "1.5em",
+            fontSize: BASE_FONT_SIZE + "em",
             width: "3em"
         }}>
             <div className="name" style={{
@@ -105,25 +111,40 @@ namespace Stopover {
 class Stopovers extends React.Component<Stopovers.Props, void> {
     render() {
         return <div style={{ position: "relative" }}>
-            <ul style={{
-                listStyle: "none",
-                display: "flex",
-                margin: "0 2.5em"
+            <div style={{
+                display: "table",
+                margin: "0 auto"
             }}>
-                {
-                    this.props.stopovers.map(x => <li key={x.stationNumber}>
-                        <Stopover name={x.name} minutes={x.minutes}/>
-                    </li>)
-                }
-            </ul>
-            <hr className="stopovers-line" style={{
+                <ul style={{
+                    listStyle: "none",
+                    display: "flex",
+                    margin: "0"
+                }}>
+                    {
+                        this.props.stopovers.map(x => <li key={x.stationNumber}>
+                            <Stopover name={x.name} minutes={x.minutes}/>
+                        </li>)
+                    }
+                </ul>
+            </div>
+            <div className="stopovers-line" style={{
                 position: "absolute",
-                height: "2.25em",
-                width: "100%",
+                height: BASE_FONT_SIZE * 1.5 + "em",
                 bottom: 0,
+                left: BASE_FONT_SIZE * 1.5 + "em",
+                right: BASE_FONT_SIZE * 1.5 + "em",
                 zIndex: -1,
-                borderRadius: 4
-            }}/>
+                borderRadius: 4,
+                textAlign: "right"
+            }}>
+                <span style={{
+                    color: "white",
+                    fontSize: BASE_FONT_SIZE * 0.75 + "em",
+                    marginRight: BASE_FONT_SIZE * 0.75 + "em"
+                }}>
+                    分
+                </span>
+            </div>
         </div>;
     }
 }
