@@ -48,7 +48,7 @@ class Clock extends React.Component<void, void> {
         return <div style={{
             position: "absolute",
             bottom: 0,
-            right: 0,
+            right: BASE_FONT_SIZE * 0.25 + "em",
             lineHeight: BASE_FONT_SIZE + "em",
             fontSize: BASE_FONT_SIZE * 1.25 + "em",
             fontWeight: "bold"
@@ -127,35 +127,39 @@ class Stopovers extends React.Component<Stopovers.Props, void> {
                     }
                 </ul>
             </div>
-            <div className="stopovers-line" style={{
+            <div style={{
                 position: "absolute",
-                height: BASE_FONT_SIZE * 1.5 + "em",
+                left: 0,
+                right: 0,
                 bottom: 0,
-                left: this.props.previous ? 0 : BASE_FONT_SIZE + "em",
-                right: this.props.next ? 0 : BASE_FONT_SIZE + "em",
-                zIndex: -1,
-                borderRadius: 4,
-                textAlign: "right"
+                height: BASE_FONT_SIZE * 1.5 + "em",
+                zIndex: -1
             }}>
+                <hr className="stopovers-line" style={{
+                    position: "absolute",
+                    left: this.props.previous ? 0 : BASE_FONT_SIZE + "em",
+                    right: this.props.next ? 0 : BASE_FONT_SIZE + "em",
+                    height: "inherit",
+                    borderRadius: 4
+                }}/>
                 <img src="img/lrbegin.svg" style={{
                     position: "absolute",
-                    top: "-4px",
+                    top: -4,
                     left: 0,
                     display: this.props.previous ? "initial" : "none"
                 }}/>
                 <img src="img/lrend.svg" style={{
                     position: "absolute",
-                    top: "-4px",
+                    top: -4,
                     right: 0,
                     display: this.props.next ? "initial" : "none"
                 }}/>
             </div>
             <span style={{
                 position: "absolute",
-                right: 0,
-                bottom: 1,
+                right: BASE_FONT_SIZE * 2 + "em",
+                bottom: 2,
                 fontSize: BASE_FONT_SIZE * 0.75 + "em",
-                marginRight: BASE_FONT_SIZE * 2 + "em",
                 color: "white"
             }}>
                 分
