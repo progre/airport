@@ -131,20 +131,35 @@ class Stopovers extends React.Component<Stopovers.Props, void> {
                 position: "absolute",
                 height: BASE_FONT_SIZE * 1.5 + "em",
                 bottom: 0,
-                left: BASE_FONT_SIZE * 1.5 + "em",
-                right: BASE_FONT_SIZE * 1.5 + "em",
+                left: this.props.previous ? 0 : BASE_FONT_SIZE + "em",
+                right: this.props.next ? 0 : BASE_FONT_SIZE + "em",
                 zIndex: -1,
                 borderRadius: 4,
                 textAlign: "right"
             }}>
-                <span style={{
-                    color: "white",
-                    fontSize: BASE_FONT_SIZE * 0.75 + "em",
-                    marginRight: BASE_FONT_SIZE * 0.75 + "em"
-                }}>
-                    分
-                </span>
+                <img src="img/lrbegin.svg" style={{
+                    position: "absolute",
+                    top: "-4px",
+                    left: 0,
+                    display: this.props.previous ? "initial" : "none"
+                }}/>
+                <img src="img/lrend.svg" style={{
+                    position: "absolute",
+                    top: "-4px",
+                    right: 0,
+                    display: this.props.next ? "initial" : "none"
+                }}/>
             </div>
+            <span style={{
+                position: "absolute",
+                right: 0,
+                bottom: 1,
+                fontSize: BASE_FONT_SIZE * 0.75 + "em",
+                marginRight: BASE_FONT_SIZE * 2 + "em",
+                color: "white"
+            }}>
+                分
+            </span>
         </div>;
     }
 }
@@ -156,6 +171,8 @@ namespace Stopovers {
             name: string;
             minutes: string;
         }[];
+        next: boolean;
+        previous: boolean;
     }
 }
 
@@ -180,9 +197,18 @@ class Root extends React.Component<void, void> {
         ];
         return <div>
             <Header/>
-            <Stopovers stopovers={stopovers.slice(stopovers.length - 5, stopovers.length) }/>
-            <Stopovers stopovers={stopovers.slice(stopovers.length - 10, stopovers.length - 5) }/>
-            <Stopovers stopovers={stopovers.slice(stopovers.length - 15, stopovers.length - 10) }/>
+            <Stopovers
+                stopovers={stopovers.slice(stopovers.length - 5, stopovers.length) }
+                previous={true}
+                next={false}/>
+            <Stopovers
+                stopovers={stopovers.slice(stopovers.length - 10, stopovers.length - 5) }
+                previous={true}
+                next={true}/>
+            <Stopovers
+                stopovers={stopovers.slice(stopovers.length - 15, stopovers.length - 10) }
+                previous={false}
+                next={true}/>
         </div>;
     }
 }
