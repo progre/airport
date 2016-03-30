@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-const BASE_FONT_SIZE = 1;
+const BASE_SIZE = 2;
 
 class Header extends React.Component<void, void> {
     render() {
@@ -12,9 +12,9 @@ class Header extends React.Component<void, void> {
                 <h1 style={{
                     borderTop: "thin solid white",
                     textAlign: "center",
-                    paddingTop: BASE_FONT_SIZE * 0.75 + "em",
-                    fontSize: BASE_FONT_SIZE * 2 + "em",
-                    lineHeight: BASE_FONT_SIZE + "em"
+                    paddingTop: BASE_SIZE * 0.75 + "em",
+                    fontSize: BASE_SIZE * 2 + "em",
+                    lineHeight: BASE_SIZE + "em"
                 }}>
                     新千歳空港
                     <small style={{ paddingLeft: "0.5em" }}>行</small>
@@ -36,7 +36,7 @@ class RollingStockType extends React.Component<void, void> {
             padding: "0 0.5em",
             borderBottomLeftRadius: 4,
             borderBottomRightRadius: 4,
-            fontSize: BASE_FONT_SIZE + "em",
+            fontSize: BASE_SIZE + "em",
             fontWeight: "bold",
             color: "white"
         }}>快速</div>;
@@ -48,9 +48,9 @@ class Clock extends React.Component<void, void> {
         return <div style={{
             position: "absolute",
             bottom: 0,
-            right: BASE_FONT_SIZE * 0.25 + "em",
-            lineHeight: BASE_FONT_SIZE + "em",
-            fontSize: BASE_FONT_SIZE * 1.25 + "em",
+            right: BASE_SIZE * 0.25 + "em",
+            lineHeight: BASE_SIZE + "em",
+            fontSize: BASE_SIZE * 1.25 + "em",
             fontWeight: "bold"
         }}>
             {"12:00"}
@@ -65,7 +65,7 @@ class Stopover extends React.Component<Stopover.Props, void> {
             nameArray.splice(i, 0, <br/>);
         }
         return <div style={{
-            fontSize: BASE_FONT_SIZE + "em",
+            fontSize: BASE_SIZE + "em",
             width: "3em"
         }}>
             <div className="name" style={{
@@ -132,20 +132,21 @@ class Stopovers extends React.Component<Stopovers.Props, void> {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                height: BASE_FONT_SIZE * 1.5 + "em",
+                height: BASE_SIZE * 1.5 + "em",
                 zIndex: -1
             }}>
                 <hr className="stopovers-line" style={{
                     position: "absolute",
-                    left: this.props.previous ? 0 : BASE_FONT_SIZE + "em",
-                    right: this.props.next ? 0 : BASE_FONT_SIZE + "em",
+                    left: this.props.previous ? 0 : BASE_SIZE + "em",
+                    right: this.props.next ? 0 : BASE_SIZE + "em",
                     height: "inherit",
                     borderRadius: 4
                 }}/>
                 <img src="img/lrbegin.svg" style={{
                     position: "absolute",
-                    top: -4,
+                    top: -4,//3,8,20   7, 5, 12   0,7,12
                     left: 0,
+                    transform: `scale(${BASE_SIZE})`,
                     display: this.props.previous ? "initial" : "none"
                 }}/>
                 <img src="img/lrend.svg" style={{
@@ -157,9 +158,9 @@ class Stopovers extends React.Component<Stopovers.Props, void> {
             </div>
             <span style={{
                 position: "absolute",
-                right: BASE_FONT_SIZE * 2 + "em",
+                right: BASE_SIZE * 2 + "em",
                 bottom: 2,
-                fontSize: BASE_FONT_SIZE * 0.75 + "em",
+                fontSize: BASE_SIZE * 0.75 + "em",
                 color: "white"
             }}>
                 分
