@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-const BASE_SIZE = 2;
+const BASE_SIZE = 1;
 
 class Header extends React.Component<void, void> {
     render() {
@@ -110,6 +110,8 @@ namespace Stopover {
 
 class Stopovers extends React.Component<Stopovers.Props, void> {
     render() {
+        const MAX = 10;
+        let spaces = MAX - this.props.stopovers.length;
         return <div style={{ position: "relative" }}>
             <div style={{
                 display: "table",
@@ -118,7 +120,7 @@ class Stopovers extends React.Component<Stopovers.Props, void> {
                 <ul style={{
                     listStyle: "none",
                     display: "flex",
-                    margin: "0"
+                    marginLeft: spaces * BASE_SIZE * 3 + "em"
                 }}>
                     {
                         this.props.stopovers.map(x => <li key={x.stationNumber}>
@@ -137,15 +139,15 @@ class Stopovers extends React.Component<Stopovers.Props, void> {
             }}>
                 <hr className="stopovers-line" style={{
                     position: "absolute",
-                    left: this.props.previous ? 0 : BASE_SIZE + "em",
+                    left: (this.props.previous ? 1.25 : 1) * BASE_SIZE + "em",
                     right: this.props.next ? 0 : BASE_SIZE + "em",
                     height: "inherit",
                     borderRadius: 4
                 }}/>
                 <img src="img/lrbegin.svg" style={{
                     position: "absolute",
-                    top: -4,//3,8,20   7, 5, 12   0,7,12
-                    left: 0,
+                    top: 12 * BASE_SIZE - 16,
+                    left: this.props.previous ? BASE_SIZE * 1 + "em" : 0,
                     transform: `scale(${BASE_SIZE})`,
                     display: this.props.previous ? "initial" : "none"
                 }}/>
@@ -203,15 +205,13 @@ class Root extends React.Component<void, void> {
         return <div>
             <Header/>
             <Stopovers
-                stopovers={stopovers.slice(stopovers.length - 5, stopovers.length) }
+                stopovers={
+                    stopovers.slice(stopovers.length - 10, stopovers.length) }
                 previous={true}
                 next={false}/>
             <Stopovers
-                stopovers={stopovers.slice(stopovers.length - 10, stopovers.length - 5) }
-                previous={true}
-                next={true}/>
-            <Stopovers
-                stopovers={stopovers.slice(stopovers.length - 15, stopovers.length - 10) }
+                stopovers={
+                    stopovers.slice(stopovers.length - 15, stopovers.length - 10) }
                 previous={false}
                 next={true}/>
         </div>;
