@@ -7,15 +7,15 @@ export default function ForHeader(props: { baseSize: number }) {
             <h1 style={{
                 borderTop: "thin solid white",
                 textAlign: "center",
-                paddingTop: this.props.baseSize * 0.75 + "em",
-                fontSize: this.props.baseSize * 2 + "em",
-                lineHeight: this.props.baseSize + "em"
+                paddingTop: props.baseSize * 0.75 + "em",
+                fontSize: props.baseSize * 2 + "em",
+                lineHeight: props.baseSize + "em"
             }}>
                 新千歳空港
                 <small style={{ paddingLeft: "0.5em" }}>行</small>
             </h1>
-            <RollingStockType baseSize={this.props.baseSize}/>
-            <Clock baseSize={this.props.baseSize}/>
+            <RollingStockType baseSize={props.baseSize}/>
+            <Clock baseSize={props.baseSize}/>
         </div>
         <hr className="header-bottom" style={{ height: 3 }}/>
     </header>;
