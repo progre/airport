@@ -1,4 +1,6 @@
 import * as React from "react";
+
+export default Map;
 class Map extends React.Component<Map.Props, void> {
     render() {
         let stopovers = this.props.stopovers;
