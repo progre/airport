@@ -1,8 +1,7 @@
 /// <reference path="../../typings/main.d.ts"/>
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import ForHeader from "./forheader";
-import Map from "./map";
+import ForScene from "./forscene";
 
 const BASE_SIZE = 1;
 
@@ -26,8 +25,7 @@ class Root extends React.Component<void, void> {
             { stationNumber: "AP15", name: "新千歳空港", en: "New Chitose Airport", minutes: "37" }
         ];
         return <div>
-            <ForHeader baseSize={BASE_SIZE}/>
-            <Map baseSize={BASE_SIZE} stopovers={stopovers}/>
+            <ForScene baseSize={BASE_SIZE} stopovers={stopovers}/>
         </div>;
     }
 }
