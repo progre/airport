@@ -62,8 +62,12 @@ gulp.task("release-build",
 gulp.task("watch", () => {
     let signal = false;
 
-    gulp.watch("src/**/*.js", gulp.series(begin, "copy:copy", end));
-    gulp.watch(["src/**/*.ts*", "!src/test/**"], gulp.series(begin, "ts:debug", "test:test", end));
+    gulp.watch(
+        ["src/**/*", "!**/tsconfig.json", "!**/*.*(jade|styl|ts|tsx)"],
+        gulp.series(begin, "copy:copy", end));
+    gulp.watch(
+        ["src/**/*.ts*", "!src/test/**"],
+        gulp.series(begin, "ts:debug", "test:test", end));
     gulp.watch("src/**/*.jade", gulp.series(begin, "jade:debug", end));
     gulp.watch("src/**/*.styl", gulp.series(begin, "stylus:stylus", end));
     gulp.watch("src/test/**/*.ts", gulp.series(begin, "test:test", end));
