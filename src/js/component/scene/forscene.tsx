@@ -1,6 +1,6 @@
 import * as React from "react";
-import ForHeader from "./forheader";
-import Map from "./map";
+import ForHeader from "../part/forheader";
+import Map from "../part/map";
 
 export default function ForScene(
     props: {

@@ -18,7 +18,7 @@ ts.main = null;
 ts.browser.configPath = "tsconfig.json";
 ts.browser.files = [{
     dest: "www/js/",
-    src: "src/js/index.tsx"
+    src: "src/js/index.ts"
 }];
 
 gulp.task("clean", done => {
