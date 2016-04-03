@@ -1,0 +1,64 @@
+{
+    "01": {
+        "ja": "札 幌",
+        "kana": "さっぽろ",
+        "en": "Sapporo"
+    },
+    "AP15": {
+        "ja": "新千歳空港",
+        "kana": "しんちとせくうこう",
+        "en": "New Chitose Airport"
+    },
+    "H02": {
+        "ja": "苗 穂",
+        "en": "Naebo"
+    },
+    "H03": {
+        "ja": "白 石",
+        "en": "Shiroishi"
+    },
+    "H04": {
+        "ja": "平 和",
+        "en": "Heiwa"
+    },
+    "H05": {
+        "ja": "新札幌",
+        "en": "Shin-Sapporo"
+    },
+    "H06": {
+        "ja": "上野幌",
+        "en": "Kami-Nopporo"
+    },
+    "H07": {
+        "ja": "北広島",
+        "en": "Kitahiroshima"
+    },
+    "H08": {
+        "ja": "島 松",
+        "en": "Shimamatsu"
+    },
+    "H09": {
+        "ja": "恵み野",
+        "en": "Megumino"
+    },
+    "H10": {
+        "ja": "恵 庭",
+        "en": "Eniwa"
+    },
+    "H11": {
+        "ja": "サッポロ\nビール庭園",
+        "en": "Sapporo-Beer-Teien"
+    },
+    "H12": {
+        "ja": "長 都",
+        "en": "Osatsu"
+    },
+    "H13": {
+        "ja": "千 歳",
+        "en": "Chitose"
+    },
+    "H14": {
+        "ja": "南千歳",
+        "en": "Minami-Chitose"
+    }
+}

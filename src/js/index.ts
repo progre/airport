@@ -1,7 +1,10 @@
 /// <reference path="../../typings/main.d.ts"/>
+declare const require: Function;
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import Root from "./component/root";
+const stations = require("../../res/station.json");
+const services = require("../../res/services.json");
 
 document.addEventListener("DOMContentLoaded", () => {
     ReactDOM.render(

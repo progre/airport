@@ -1,0 +1,67 @@
+[
+    {
+        "name": "エアポート",
+        "inbound": [
+            {
+                "stationNumber": "01",
+                "minutes": 0
+            },
+            {
+                "stationNumber": "H02",
+                "minutes": null
+            },
+            {
+                "stationNumber": "H03",
+                "minutes": null
+            },
+            {
+                "stationNumber": "H04",
+                "minutes": null
+            },
+            {
+                "stationNumber": "H05",
+                "minutes": 9
+            },
+            {
+                "stationNumber": "H06",
+                "minutes": null
+            },
+            {
+                "stationNumber": "H07",
+                "minutes": 17
+            },
+            {
+                "stationNumber": "H08",
+                "minutes": null
+            },
+            {
+                "stationNumber": "H09",
+                "minutes": null
+            },
+            {
+                "stationNumber": "H10",
+                "minutes": 24
+            },
+            {
+                "stationNumber": "H11",
+                "minutes": null
+            },
+            {
+                "stationNumber": "H12",
+                "minutes": null
+            },
+            {
+                "stationNumber": "H13",
+                "minutes": 30
+            },
+            {
+                "stationNumber": "H14",
+                "minutes": 34
+            },
+            {
+                "stationNumber": "AP15",
+                "minutes": 37
+            }
+        ]
+    }
+]

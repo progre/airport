@@ -1,13 +1,10 @@
 import * as React from "react";
+import {IntermediateStation} from "../../intermediatestation";
 
 export default function Map(
     props: {
         baseSize: number;
-        stopovers: {
-            stationNumber: string;
-            name: string;
-            minutes: string;
-        }[];
+        stopovers: IntermediateStation[];
     }
 ) {
     let stopovers = props.stopovers;
@@ -30,11 +27,7 @@ export default function Map(
 function Stopovers(
     props: {
         baseSize: number;
-        stopovers: {
-            stationNumber: string;
-            name: string;
-            minutes: string;
-        }[];
+        stopovers: IntermediateStation[];
         next: boolean;
         previous: boolean;
     }
@@ -55,8 +48,8 @@ function Stopovers(
                     props.stopovers.map(x => <li key={x.stationNumber}>
                         <Stopover
                             baseSize={props.baseSize}
-                            name={x.name}
-                            minutes={x.minutes}/>
+                            name={x.ja}
+                            minutes={"" + x.minutes}/>
                     </li>)
                 }
             </ul>
