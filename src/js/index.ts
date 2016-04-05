@@ -3,12 +3,19 @@ declare const require: Function;
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import Root from "./component/root";
-const stations = require("../../res/station.json");
-const services = require("../../res/services.json");
+const stations = require("../res/stations.json");
+const services = require("../res/services.json");
 
 document.addEventListener("DOMContentLoaded", () => {
+    let stopovers = (services[0].inbound as any[])
+        .map(x => ({
+            stationNumber: x.stationNumber,
+            ja: stations[x.stationNumber].ja,
+            en: stations[x.stationNumber].en,
+            minutes: x.minutes
+        }));
     ReactDOM.render(
-        React.createElement(Root),
+        React.createElement(Root, { stopovers }),
         document.getElementsByTagName("main")[0]
     );
 });

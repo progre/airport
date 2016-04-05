@@ -48,8 +48,7 @@ function Stopovers(
                     props.stopovers.map(x => <li key={x.stationNumber}>
                         <Stopover
                             baseSize={props.baseSize}
-                            name={x.ja}
-                            minutes={"" + x.minutes}/>
+                            station={x}/>
                     </li>)
                 }
             </ul>
@@ -85,7 +84,7 @@ function Stopovers(
         </div>
         <span style={{
             position: "absolute",
-            right: props.baseSize * 2 + "em",
+            right: props.baseSize * 2.5 + "em",
             bottom: 2,
             fontSize: props.baseSize * 0.75 + "em",
             color: "white"
@@ -98,11 +97,10 @@ function Stopovers(
 function Stopover(
     props: {
         baseSize: number;
-        name: string;
-        minutes: string;
+        station: IntermediateStation;
     }
 ) {
-    let nameArray: (string | JSX.Element)[] = props.name.split("\n");
+    let nameArray: (string | JSX.Element)[] = props.station.ja.split("\n");
     for (let i = nameArray.length - 1; i >= 1; i--) {
         nameArray.splice(i, 0, <br/>);
     }
@@ -137,7 +135,7 @@ function Stopover(
             backgroundColor: "white",
             fontWeight: "bold"
         }}>
-            {props.minutes}
+            {props.station.minutes}
         </div>
     </div>;
 }
