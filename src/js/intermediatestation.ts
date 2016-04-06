@@ -4,4 +4,5 @@ export interface IntermediateStation {
     kana?: string;
     en: string;
     minutes: number;
+    outboundOrientation: number;
 }
